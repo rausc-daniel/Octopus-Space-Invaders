@@ -7,7 +7,6 @@ class Entity {
         this.x = x - (this.width / 2);
         this.y = y - (this.height / 2);
         this.state = 0;
-        this.currentWeapon = 1;
     }
 
     draw() {
@@ -31,6 +30,7 @@ class Player extends Entity {
         this.weapons = [new Weapon(crabLegR), new Weapon(penguin1), new Weapon(crabLegL)];
         this.score = 0;
         this.hp = 300;
+        this.currentWeapon = 1;
 
         this.leftVector = new Vector(-0.5, 1).normalize();
         this.upVector = new Vector(0, 1).normalize();

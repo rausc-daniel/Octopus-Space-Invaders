@@ -125,7 +125,15 @@ function animateEntities() {
 
 function handleCollisions() {
     for (let i = 0; i < entities["aliens"].length; i++) {
-        if(detectColission(entities["player"], entities["aliens"][i])) {
+        if(detectColission(entities["player"].weapons[0], entities["aliens"][i])) {
+            entities["player"].score++;
+            entities["aliens"].splice(i,1);
+        }
+        else if(detectColission(entities["player"].weapons[2], entities["aliens"][i])) {
+            entities["player"].score++;
+            entities["aliens"].splice(i,1);
+        }
+        else if(detectColission(entities["player"], entities["aliens"][i])) {
             entities["player"].hit();
             entities["aliens"].splice(i,1);
         }
