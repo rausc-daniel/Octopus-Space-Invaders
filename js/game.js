@@ -15,9 +15,10 @@ canvas.height = canvasHeight;
 
 let entities = {}
 
+
 window.onload = function () {
     entities = {
-        player: new Player(canvasMiddle, canvasHeight - 100),
+        player: new Player(canvasMiddle, canvasHeight - 100, 70, 60),
         projectiles: [],
         aliens: []
     }
@@ -34,7 +35,7 @@ window.onload = function () {
 
         // AI Logic
         if(Math.random() < 0.05) {
-            entities["aliens"].push(new Enemy((Math.random() * (canvasWidth + 100)) - 00, 100));
+            entities["aliens"].push(new Enemy((Math.random() * (canvasWidth + 100)) - 00, 100, 70, 60));
         }
         let playerPos = new Vector(entities["player"].x, entities["player"].y);
         for(let i = 0; i < entities["aliens"].length; i++) {

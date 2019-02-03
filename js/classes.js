@@ -1,21 +1,29 @@
 class Entity {
 
-    constructor(image, x, y) {
+    constructor(image, x, y, collisionWidth, collisionHeight) {
         this.image = image;
         this.width = this.image.width / 2;
         this.height = this.image.height;
+        this.centerX = x;
+        this.centerY = y;
         this.x = x - (this.width / 2);
         this.y = y - (this.height / 2);
+        this.collisionWidth = collisionWidth == null || collisionWidth == 0 ? this.width : collisionWidth;
+        this.collisionHeight = collisionHeight == null || collisionHeight == 0 ? this.height : collisionHeight;
         this.state = 0;
     }
 
     draw() {
         context.drawImage(this.image, this.width * this.state, 0, this.width, this.height, this.x, this.y, this.width, this.height);
+        context.lineWidth = 1;
+        context.strokeRect(this.centerX - this.collisionWidth / 2, this.centerY - this.collisionHeight / 2, this.collisionWidth, this.collisionHeight);
     }
 
     move(x, y) {
         this.x += x;
         this.y += y;
+        this.centerX += x;
+        this.centerY += y;
     }
 
     animate() {
@@ -25,9 +33,9 @@ class Entity {
 
 class Player extends Entity {
 
-    constructor(x, y) {
-        super(playerImage, x, y);
-        this.weapons = [new Weapon(crabLegR), new Weapon(penguin1), new Weapon(crabLegL)];
+    constructor(x, y, collisionWidth, collisionHeight) {
+        super(playerImage, x, y, collisionWidth, collisionHeight);
+        this.weapons = [new Weapon(crabLegR, 10, 25, 25, 25), new Weapon(penguin1, 50, 10, 20, 20), new Weapon(crabLegL, 90, 25, 25, 25)];
         this.score = 0;
         this.hp = 300;
         this.currentWeapon = 1;
@@ -44,10 +52,11 @@ class Player extends Entity {
             current.moveTo(this.x + 10, this.y - 10);
             current.draw();
         }
+        context.strokeStyle = "#0f0";
         super.draw();
     }
 
-    animate() {        
+    animate() {
         for (let i = 0; i < this.weapons.length; i++) {
             let current = this.weapons[i];
             current.animate();
@@ -64,25 +73,41 @@ class Player extends Entity {
 }
 
 class Weapon extends Entity {
-    constructor(image) {
-        super(image, 0, 0);
+    constructor(image, offsetX, offsetY, collisionWidth, collisionHeight) {
+        super(image, 0, 0, collisionWidth, collisionHeight);
+        this.offsetX = offsetX;
+        this.offsetY = offsetY;
+        console.log(this.centerX + " / " + this.centerY);
     }
 
     moveTo(x, y) {
         this.x = x;
         this.y = y;
+        this.centerX = x + this.offsetX;
+        this.centerY = y + this.offsetY;
+        console.log(this.centerX + " / " + this.centerY);
+    }
+
+    draw() {
+        context.strokeStyle = "#f00";
+        super.draw();
     }
 }
 
 class Enemy extends Entity {
-    constructor(x, y) {
-        super(enemyImage, x, y);
+    constructor(x, y, collisionWidth, collisionHeight) {
+        super(enemyImage, x, y, collisionWidth, collisionHeight);
+    }
+
+    draw() {
+        context.strokeStyle = "#00f";
+        super.draw();
     }
 }
 
 class Projectile extends Entity {
-    constructor(x, y, score, movementVector) {
-        super(projectileImage, x, y);
+    constructor(x, y, score, movementVector, collisionWidth, collisionHeight) {
+        super(projectileImage, x, y, collisionWidth, collisionHeight);
         this.score = score;
         this.movementVector = movementVector * projectileSpeed;
     }
@@ -93,7 +118,7 @@ class Projectile extends Entity {
 
     move() {
         console.log("penis");
-        
+
         super.move(this.movementVector.x * deltaTime, this.movementVector.y * deltaTime);
     }
 }

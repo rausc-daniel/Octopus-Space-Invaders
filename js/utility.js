@@ -125,15 +125,11 @@ function animateEntities() {
 
 function handleCollisions() {
     for (let i = 0; i < entities["aliens"].length; i++) {
-        if(detectColission(entities["player"], entities["aliens"][i])) {
+        if(detectColission(entities["player"], entities["aliens"][i]) || detectColission(entities["player"].weapons[1], entities["aliens"][i])) {
             entities["player"].hit();
             entities["aliens"].splice(i,1);
         }
-        else if(detectColission(entities["player"].weapons[0], entities["aliens"][i])) {
-            entities["player"].score++;
-            entities["aliens"].splice(i,1);
-        }
-        else if(detectColission(entities["player"].weapons[2], entities["aliens"][i])) {
+        else if(detectColission(entities["player"].weapons[0], entities["aliens"][i]) || detectColission(entities["player"].weapons[2], entities["aliens"][i])) {
             entities["player"].score++;
             entities["aliens"].splice(i,1);
         }
@@ -141,10 +137,10 @@ function handleCollisions() {
 }
 
 function detectColission(a  , b) {
-    if(a.x < b.x + b.width && 
-        a.x + a.width > b.x &&
-        a.y < b.y + b.height && 
-        a.y + a.height > b.y) {
+    if(a.centerX - a.collisionWidth / 2 < b.centerX + b.collisionWidth / 2 && 
+        a.centerX + a.collisionWidth / 2 > b.centerX - b.collisionWidth / 2 &&
+        a.centerY - a.collisionHeight / 2 < b.centerY + b.collisionHeight / 2 && 
+        a.centerY + a.collisionHeight / 2 > b.centerY - b.collisionHeight / 2) {
             return true;
         }
     return false;
