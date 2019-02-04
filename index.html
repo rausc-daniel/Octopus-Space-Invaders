@@ -1,11 +1,75 @@
 <!DOCTYPE html>
 <html>
+
 <head>
     <meta charset="utf-8" />
     <title>Octogeddon Lite Menu</title>
+    <style>
+        * {
+            border: 0;
+            margin: 0;
+            box-sizing: border-box;
+            font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+
+        }
+
+        body {
+            width: 100vw;
+            height: 100vh;
+            margin: auto;
+            background: url("./img/bg.jpg");
+            background-size: 100% 100%;
+        }
+
+        .head {
+            text-align: center;
+        }
+
+        h1 {
+            margin-top: 100px;
+            display: inline-block;
+            color: white;
+            font-size: 40pt;
+        }
+
+        .links {
+            position: absolute;
+            top: calc(50vh - 100px);
+            left: calc(50vw - 200px);
+        }
+
+        a {
+            display: block;
+            width: 400px;
+            height: 100px;
+            border: 1px solid white;
+            text-align: center;
+            line-height: 100px;
+            margin: 10px auto;
+            border-radius: 20px;
+            text-decoration: none;
+            color: white;
+            font-size: 15pt;
+            font-weight: bold;
+            transition: background-color 200ms;
+            background-color: rgba(255, 255, 255, 0)
+        }
+
+        a:hover {
+            transition: background-color 200ms;
+            background-color: rgba(255, 255, 255, 0.1);
+        }
+    </style>
 </head>
+
 <body>
-    <a href="game">Start Main Game</a>
-    <a href="highscores">View Highscores</a>
+    <div class="head">
+        <h1>Welcome to Octogeddon Lite!</h1>
+    </div>
+    <div class="links">
+        <a href="game">Start The Game</a>
+        <a href="highscores">View Highscores</a>
+    </div>
 </body>
+
 </html>
