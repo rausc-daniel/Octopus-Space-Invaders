@@ -34,7 +34,7 @@ const projectileImage = new Image();
 projectileImage.src = "./img/projectile.png";
 
 const enemyImage = new Image();
-enemyImage.src = "./img/player.png";
+enemyImage.src = "./img/alien.png";
 
 const penguins = [penguin1, penguin2, penguin3]
 
