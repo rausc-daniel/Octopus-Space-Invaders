@@ -24,22 +24,11 @@ crabLegR.src = "./img/crab_leg_right.png";
 const penguin = new Image();
 penguin.src = "./img/penguin.png";
 
-const penguin1 = new Image();
-penguin1.src = "./img/penguin_1.png";
-
-const penguin2 = new Image();
-penguin2.src = "./img/penguin_2.png";
-
-const penguin3 = new Image();
-penguin3.src = "./img/penguin_3.png";
-
 const projectileImage = new Image();
 projectileImage.src = "./img/schneeball.png";
 
 const enemyImage = new Image();
 enemyImage.src = "./img/alien.png";
-
-//const penguins = [penguin1, penguin2, penguin3]
 
 function keyDown(event) {
     if (event.keyCode == 65)
@@ -76,7 +65,7 @@ function handleInput() {
         entities["player"].shoot();
         changeTimer = 0;
     }
-        
+
     // if (esc)
     //     clearInterval(gameLoop);
 }
@@ -95,7 +84,7 @@ function drawEntities() {
 
     for (let i = 0; i < entities["projectiles"].length; i++) {
         entities["projectiles"][i].draw();
-        if(entities["projectiles"][i].y < 0)
+        if (entities["projectiles"][i].y < 0)
             entities["projectiles"].splice(i, 1);
     }
 
@@ -123,6 +112,8 @@ function handleCollisions() {
             entities["aliens"].splice(i, 1);
         }
         for (let j = 0; j < entities["projectiles"].length; j++) {
+            if (entities["aliens"][i] == null || entities["projectiles"][j] == null)
+                continue;
             if (detectColission(entities["aliens"][i], entities["projectiles"][j])) {
                 entities["aliens"].splice(i, 1);
                 entities["projectiles"].splice(j, 1);
