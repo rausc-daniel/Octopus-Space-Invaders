@@ -38,11 +38,25 @@
             left: calc(50vw - 200px);
         }
 
+        input {
+            display: block;
+            width: 400px;
+            height: 50px;
+            border-bottom: 2px solid white;
+            background: none;
+            text-align: center;
+            color: white;
+            font-size: 15pt;
+            font-weight: bold;
+            /* transition: background-color 200ms, box-shadow 200ms; */
+            border-radius: 20px;
+        }
+
         a {
             display: block;
             width: 400px;
             height: 100px;
-            border: 1px solid white;
+            box-shadow: none;
             text-align: center;
             line-height: 100px;
             margin: 10px auto;
@@ -51,13 +65,14 @@
             color: white;
             font-size: 15pt;
             font-weight: bold;
-            transition: background-color 200ms;
+            border-bottom: 2px solid white;
+            transition: background-color 200ms, box-shadow 200ms;
             background-color: rgba(255, 255, 255, 0)
         }
 
         a:hover {
-            transition: background-color 200ms;
             background-color: rgba(255, 255, 255, 0.1);
+            box-shadow: 0 0 5px #fff;
         }
     </style>
 </head>
@@ -66,7 +81,9 @@
     <div class="head">
         <h1>Welcome to Octogeddon Lite!</h1>
     </div>
+
     <div class="links">
+        <input type="text" id="name" placeholder="Enter your name">
         <a href="game">Start The Game</a>
         <a href="highscores">View Highscores</a>
     </div>

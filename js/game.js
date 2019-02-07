@@ -18,7 +18,7 @@ let entities = {}
 
 window.onload = function () {
     entities = {
-        player: new Player(canvasMiddle, canvasHeight - 100, 70, 60),
+        player: new Player(canvasMiddle, canvasHeight - 100, 30, 60),
         projectiles: [],
         aliens: []
     }
@@ -35,7 +35,7 @@ window.onload = function () {
 
         // AI Logic
         if(Math.random() < 0.05) {
-            entities["aliens"].push(new Enemy((Math.random() * (canvasWidth + 100)) - 00, 100, 70, 60));
+            entities["aliens"].push(new Enemy((Math.random() * (canvasWidth + 100)) - 00, 100, 80, 30));
         }
         let playerPos = new Vector(entities["player"].x, entities["player"].y);
         for(let i = 0; i < entities["aliens"].length; i++) {
@@ -45,6 +45,8 @@ window.onload = function () {
 
         handleCollisions();
         
+        if(entities["player"].hp == 1)
+            entities["player"].state = 1;
         if(entities["player"].hp == 0){
             clearInterval(gameLoop);
         }
