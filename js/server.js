@@ -8,7 +8,7 @@ app.use(express.json());
 // app.use(bodyParser.urlencoded({extended: false}));
 // app.use(bodyParser.json());
 
-const db = new sqlite.Database("database");
+const db = new sqlite.Database("/var/www/kik.danielrauschenberger.de/database");
 
 app.use(cors());
 
