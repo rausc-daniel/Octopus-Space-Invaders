@@ -18,6 +18,7 @@ let entities = {}
 let scoreInserted = false;
 
 function insert(ip, table, name, score) {
+    console.log("test");
     fetch("http://" + ip + "/setHighscore", {
         method: "POST",
         headers: {
