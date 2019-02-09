@@ -75,7 +75,6 @@
             box-shadow: 0 0 5px #fff;
         }
     </style>
-    <script src="js/dbWrapper.js"></script>
 </head>
 
 <body>
@@ -85,11 +84,15 @@
 
     <div class="links">
         <input type="text" id="name" placeholder="Enter your name">
-        <a href="game">Start The Game</a>
+        <a href="/game" id="startup">Start The Game</a>
         <a href="highscores">View Highscores</a>
     </div>
     <script>
-        run();
+        const input = document.getElementById("startup");
+        input.addEventListener("click", () => {
+            localStorage.setItem("name", document.getElementById("name").value === "" ? "Anonymous" : document.getElementById("name").value);
+        })
+        
     </script>
 </body>
 

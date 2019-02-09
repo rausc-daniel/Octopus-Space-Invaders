@@ -20,6 +20,7 @@ app.post("/setHighscore", (req, res) => {
     let score = data["score"];
     db.run("CREATE TABLE IF NOT EXISTS " + table + "(id INTEGER PRIMARY KEY AUTOINCREMENT, name TEXT NOT NULL, score INTEGER NOT NULL)");
     db.run("INSERT INTO " + table + "(name, score) VALUES('" + name + "', " + score + ");");
+    res.end();
 });
 
 app.post("/getHighscores", (req, res) => {
