@@ -17,6 +17,20 @@ let entities = {}
 
 let scoreInserted = false;
 
+function insert(ip, table, name, score) {
+    fetch("http://" + ip + "/setHighscore", {
+        method: "POST",
+        headers: {
+            "Content-Type": "application/json"
+        },
+        body: JSON.stringify({
+            table: table,
+            name: name,
+            score: score
+        })
+    });
+}
+
 window.onload = function () {
     entities = {
         player: new Player(canvasMiddle, canvasHeight - 100, 30, 60),
