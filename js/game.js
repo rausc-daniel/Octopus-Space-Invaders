@@ -70,7 +70,7 @@ window.onload = function () {
                 insert("kik.danielrauschenberger.de", "daniel", localStorage.getItem("name"), entities["player"].score);
                 console.log(localStorage.getItem("name"));
                 scoreInserted = true;
-                //window.location.href = "http://www.kik.danielrauschenberger.de/highscores";
+                window.location.href = "http://www.kik.danielrauschenberger.de/highscores";
             }
             
         }
