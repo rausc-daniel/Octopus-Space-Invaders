@@ -52,9 +52,10 @@ window.onload = function () {
             if(!scoreInserted) {
                 deltaTime = 0;
                 entities["player"].hp = 0;
-                window.location.href = "http://www.kik.danielrauschenberger.de/highscores";
                 insert("kik.danielrauschenberger.de", "daniel", localStorage.getItem("name"), entities["player"].score);
+                console.log(localStorage.getItem("name"));
                 scoreInserted = true;
+                //window.location.href = "http://www.kik.danielrauschenberger.de/highscores";
             }
             
         }
