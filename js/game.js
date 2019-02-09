@@ -50,7 +50,7 @@ window.onload = function () {
         if(entities["player"].hp == 0){
             clearInterval(gameLoop);
 
-                window.location.href = "kik.danielrauschenberger.de/highscores";
+                window.location.href = "http://www.kik.danielrauschenberger.de/highscores";
 
         }
 
