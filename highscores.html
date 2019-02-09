@@ -137,7 +137,7 @@
                 .parse(responseData));
             for (let i = 0; i < scores.length; i++) {
                 let tmp = document.getElementById(i);
-                tmp.children[0].innerHTML = scores[i]["id"];
+                tmp.children[0].innerHTML = i;
                 tmp.children[1].innerHTML = scores[i]["name"];
                 tmp.children[2].innerHTML = scores[i]["score"];
             }
