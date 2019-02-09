@@ -48,10 +48,8 @@ window.onload = function () {
         if(entities["player"].hp == 1)
             entities["player"].state = 1;
         if(entities["player"].hp == 0){
-            clearInterval(gameLoop);
-
-                window.location.href = "http://www.kik.danielrauschenberger.de/highscores";
-
+            console.log("penis");
+            window.location.href = "http://www.kik.danielrauschenberger.de/highscores";
         }
 
         // Logic
