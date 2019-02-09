@@ -31,8 +31,8 @@ function getHighScores(ip, table, limit) {
 
 
 async function run() {
-    insert("127.0.0.1", "daniel", "Daniel", 10);
+    insert("kik.danielrauschenberger.de", "daniel", "Daniel", 10);
 
-    let penis = await getHighScores("127.0.0.1", "daniel", 10).then(responseData => responseData);
+    let penis = await getHighScores("kik.danielrauschenberger.de", "daniel", 10).then(responseData => responseData);
     console.log(JSON.parse(penis));
 }
