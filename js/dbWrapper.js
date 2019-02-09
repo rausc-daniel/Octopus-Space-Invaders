@@ -1,5 +1,5 @@
 function insert(ip, table, name, score) {
-    fetch("http://" + ip + ":5000/setHighscore", {
+    fetch("http://" + ip + "/setHighscore", {
         method: "POST",
         headers: {
             "Content-Type": "application/json"
@@ -13,7 +13,7 @@ function insert(ip, table, name, score) {
 }
 
 function getHighScores(ip, table, limit) {
-    return fetch("http://" + ip + ":5000/getHighscores", {
+    return fetch("http://" + ip + "/getHighscores", {
             method: "POST",
             body: JSON.stringify({
                 table: table,

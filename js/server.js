@@ -40,6 +40,11 @@ app.post("/getHighscores", (req, res) => {
     
 });
 
+app.get("/test", (req, res) => {
+res.writeHead(200, {"Content-Type": "application/json"});
+res.end(JSON.stringify({name: "daniel"}));
+});
+
 app.listen(5000, () => {
     console.log("Listening on port 5000");
 });
