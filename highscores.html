@@ -135,6 +135,7 @@
             let table = document.querySelector("table");
             let scores = await getHighScores("kik.danielrauschenberger.de", "daniel", 10).then(responseData => JSON
                 .parse(responseData));
+            console.log(scores);
             for (let i = 0; i < scores.length; i++) {
                 let tmp = document.getElementById(i);
                 tmp.children[0].innerHTML = i + 1;
