@@ -12,7 +12,8 @@ const db = new sqlite.Database("database");
 
 app.use(cors());
 
-app.post("/", (req, res) => {
+app.post("/setHighscore", (req, res) => {
+    console.log(req.body);
     let data = req.body;
     let table = data["table"];
     let name = data["name"];
@@ -21,9 +22,9 @@ app.post("/", (req, res) => {
     db.run("INSERT INTO " + table + "(name, score) VALUES('" + name + "', " + score + ");");
 });
 
-app.post("/", (req, res) => {
+app.post("/getHighscores", (req, res) => {
     let data = req.body;
-    let table = data["body"];
+    let table = data["table"];
     let limit = data["limit"];
     res.writeHead(200, {"Content-Type": "application.json"});
     db.all("SELECT * FROM " + table + " ORDER BY score DESC LIMIT " + limit, [], (err, rows) => {
@@ -32,7 +33,7 @@ app.post("/", (req, res) => {
             res.end(JSON.stringify({}));
         }
         if(rows) {
-            console.log(JSON.stringify(rows));
+            console.log(rows);
             res.end(JSON.stringify(rows));
         }
     });

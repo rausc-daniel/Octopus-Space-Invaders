@@ -1,5 +1,5 @@
 function insert(ip, table, name, score) {
-    fetch("http://" + ip + ":5000/", {
+    fetch("http://" + ip + ":5000/setHighscore", {
         method: "POST",
         headers: {
             "Content-Type": "application/json"
@@ -12,14 +12,13 @@ function insert(ip, table, name, score) {
     });
 }
 
-function getHighScores(ip, table, amount) {
-    return fetch("http://" + ip + ":5000/", {
+function getHighScores(ip, table, limit) {
+    return fetch("http://" + ip + ":5000/getHighscores", {
             method: "POST",
-            body: {
+            body: JSON.stringify({
                 table: table,
-                amount,
-                amount
-            },
+                limit: limit,
+            }),
             headers: {
                 "Content-Type": "application/json"
             }
@@ -32,8 +31,8 @@ function getHighScores(ip, table, amount) {
 
 
 async function run() {
-    insert("kik.danielrauschenberger.de", "daniel", "Daniel", 10);
+    insert("127.0.0.1", "daniel", "Daniel", 10);
 
-    let penis = await wrapper.getHighScores("kik.danielrauschenberger.de", "daniel", 10).then(responseData => responseData);
-    console.log(penis);
+    let penis = await getHighScores("127.0.0.1", "daniel", 10).then(responseData => responseData);
+    console.log(JSON.parse(penis));
 }
