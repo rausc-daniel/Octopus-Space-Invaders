@@ -1,13 +1,126 @@
 <!DOCTYPE html>
 <html>
+
 <head>
     <meta charset="utf-8" />
     <title>Octogeddon Lite Highscores</title>
+    <script src="./js/dbWrapper.js"></script>
+    <style>
+        * {
+            font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+            box-sizing: border-box;
+            padding: 0;
+            margin: 0;
+        }
+        body {
+            width: 100vw;
+            height: 100vh;
+            background: url("./img/bg.jpg");
+            background-size: 100% 100%;
+        }
+        h1 {
+            margin-left: calc(50% - 350px);
+            color: #fff;
+            position: absolute;
+            top: 50px;
+            font-size: 30pt;
+        }
+        table {
+            box-shadow: 0 0 5px #fff;
+            border-collapse: collapse;
+            text-align: center;
+            color: #fff;
+            margin: auto;
+            width: 400px;
+            height: 500px;
+            font-size: 15pt;
+            position: absolute;
+            top: 200px;
+            left: calc(50vw - 200px);
+            /* border-radius: 20px; */
+        }
+        td, th {
+            /* border-radius: 20px; */
+            box-shadow: 0 0 2px #fff;
+        }
+        .name {
+            width: 220px;
+        }
+    </style>
 </head>
+
 <body>
     <h1>Watch the all time Highscores here</h1>
+    <table>
+        <tr>
+            <th class="outer">Rank</th>
+            <th class="name">Name</th>
+            <th class="outer">Score</th>
+        </tr>
+        <tr id="0">
+            <td class="outer"></td>
+            <td class="name"></td>
+            <td class="outer"></td>
+        </tr>
+        <tr id="1">
+            <td class="outer"></td>
+            <td class="name"></td>
+            <td class="outer"></td>
+        </tr>
+        <tr id="2">
+            <td class="outer"></td>
+            <td class="name"></td>
+            <td class="outer"></td>
+        </tr>
+        <tr id="3">
+            <td class="outer"></td>
+            <td class="name"></td>
+            <td class="outer"></td>
+        </tr>
+        <tr id="4">
+            <td class="outer"></td>
+            <td class="name"></td>
+            <td class="outer"></td>
+        </tr>
+        <tr id="5">
+            <td class="outer"></td>
+            <td class="name"></td>
+            <td class="outer"></td>
+        </tr>
+        <tr id="6">
+            <td class="outer"></td>
+            <td class="name"></td>
+            <td class="outer"></td>
+        </tr>
+        <tr id="7">
+            <td class="outer"></td>
+            <td class="name"></td>
+            <td class="outer"></td>
+        </tr>
+        <tr id="8">
+            <td class="outer"></td>
+            <td class="name"></td>
+            <td class="outer"></td>
+        </tr>
+        <tr id="9">
+            <td class="outer"></td>
+            <td class="name"></td>
+            <td class="outer"></td>
+        </tr>
+    </table>
     <script>
-        console.log(localStorage.getItem("name"));
+        async function fetchScores() {
+            let table = document.querySelector("table");
+            let scores = await getHighScores("kik.danielrauschenberger.de", "daniel", 10).then(responseData => JSON.parse(responseData));
+            for(let i = 0; i < scores.length; i++) {
+                let tmp = document.getElementById(i);
+                tmp.children[0].innerHTML = scores[i]["id"];
+                tmp.children[1].innerHTML = scores[i]["name"];
+                tmp.children[2].innerHTML = scores[i]["score"];
+            }
+        }
+        fetchScores();
     </script>
 </body>
+
 </html>

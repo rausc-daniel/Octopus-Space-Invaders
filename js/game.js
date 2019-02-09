@@ -5,7 +5,7 @@ const canvasWidth = 1024;
 const canvasHeight = 768;
 const canvasMiddle = canvasWidth / 2;
 
-const deltaTime = 1000 / 60;
+let deltaTime = 1000 / 60;
 let timer = 0;
 
 let gameLoop = null;
@@ -15,6 +15,7 @@ canvas.height = canvasHeight;
 
 let entities = {}
 
+let scoreInserted = false;
 
 window.onload = function () {
     entities = {
@@ -48,8 +49,14 @@ window.onload = function () {
         if(entities["player"].hp == 1)
             entities["player"].state = 1;
         if(entities["player"].hp == 0){
-            console.log("penis");
-            window.location.href = "http://www.kik.danielrauschenberger.de/highscores";
+            if(!scoreInserted) {
+                deltaTime = 0;
+                entities["player"].hp = 0;
+                window.location.href = "http://www.kik.danielrauschenberger.de/highscores";
+                insert("kik.danielrauschenberger.de", "daniel", localStorage.getItem("name"), entities["player"].score);
+                scoreInserted = true;
+            }
+            
         }
 
         // Logic
