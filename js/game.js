@@ -49,6 +49,9 @@ window.onload = function () {
             entities["player"].state = 1;
         if(entities["player"].hp == 0){
             clearInterval(gameLoop);
+            setTimeout(500, () => {
+                window.location.href = "kik.danielrauschenberger.de/highscores";
+            });
         }
 
         // Logic
