@@ -51,6 +51,35 @@
         .name {
             width: 220px;
         }
+
+        a {
+            display: inline-block;
+            width: 200px;
+            height: 60px;
+            box-shadow: none;
+            text-align: center;
+            line-height: 60px;
+            margin: 10px auto;
+            border-radius: 20px;
+            text-decoration: none;
+            color: white;
+            font-size: 12pt;
+            font-weight: bold;
+            border-bottom: 2px solid white;
+            transition: background-color 200ms, box-shadow 200ms;
+            background-color: rgba(255, 255, 255, 0)
+        }
+
+        a:hover {
+            background-color: rgba(255, 255, 255, 0.1);
+            box-shadow: 0 0 5px #fff;
+        }
+
+        .links {
+            position: absolute;
+            top: 710px;
+            left: calc(50vw - 200px);
+        }
     </style>
 </head>
 
@@ -113,6 +142,10 @@
             <td class="outer"></td>
         </tr>
     </table>
+    <div class="links">
+        <a href="http://kik.danielrauschenberger.de">Back to main menu</a>
+        <a href="http://kik.danielrauschenberger.de/game">Play again</a>
+    </div>
     <script>
         function getHighScores(ip, table, limit) {
             return fetch("http://" + ip + "/getHighscores", {
