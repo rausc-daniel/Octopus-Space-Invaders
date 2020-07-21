@@ -143,8 +143,8 @@
         </tr>
     </table>
     <div class="links">
-        <a href="http://kik.danielrauschenberger.de">Back to main menu</a>
-        <a href="http://kik.danielrauschenberger.de/game">Play again</a>
+        <a href="./index.html">Back to main menu</a>
+        <a href="./game.html">Play again</a>
     </div>
     <script>
         function getHighScores(ip, table, limit) {
@@ -166,7 +166,7 @@
 
         async function fetchScores() {
             let table = document.querySelector("table");
-            let scores = await getHighScores("kik.danielrauschenberger.de", "daniel", 10).then(responseData => JSON
+            let scores = await getHighScores("127.0.0.1", "daniel", 10).then(responseData => JSON
                 .parse(responseData));
             console.log(scores);
             for (let i = 0; i < scores.length; i++) {
