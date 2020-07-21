@@ -1,3 +1,5 @@
 # Octopus Space Invaders
 
-A simple implementation on Space Invaders mixed with Elements from Octogeddon made for a school project.
+A simple implementation on Space Invaders mixed with Elements from [Octogeddon](http://octogeddon.com/) made for a school project.
+
+![Sample Image](https://github.com/rausc-daniel/OctogeddonSpaceInvaders/blob/master/img/SampleImage.png)
